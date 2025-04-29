@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livros </title>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Cadastro de Usuário</h2>
+        <form id="cadastroForm">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+
+            <div class="error" id="mensagemErro"></div>
+
+            <input type="submit" value="Cadastrar">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("cadastroForm").addEventListener("submit", function(event) {
+            const nome = document.getElementById("nome").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const senha = document.getElementById("senha").value;
+            const erro = document.getElementById("mensagemErro");
+
+            erro.textContent = ""; // limpa mensagens anteriores
+
+            if (nome === "" || email === "" || senha === "") {
+                erro.textContent = "Todos os campos devem ser preenchidos.";
+                event.preventDefault(); // impede o envio do formulário
+                return;
+            }
+
+            if (senha.length < 6) {
+                erro.textContent = "A senha deve ter pelo menos 6 caracteres.";
+                event.preventDefault();
+                return;
+            }
+
+            alert("Cadastro realizado com sucesso!");
+        });
+    </script>
+
+
+</body>
+</html>
